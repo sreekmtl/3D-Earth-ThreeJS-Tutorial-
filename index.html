@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>3D-Earth-ThreeJS-Tutorial</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+		<style>
+			body { margin: 0; }
+		</style>
+
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    
+    
+
+    <script type="importmap">
+    {
+        "imports": {	
+        "three": "https://unpkg.com/three@0.154.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.154.0/examples/jsm/"
+        }
+    }
+    </script>
+
+	</head>
+	<body>
+        <div class="header">
+            <h1>3D Earth</h1>
+            <p1 id="displayText">Sample</p1>
+            <p2 id="cordText">Right Click for Coordinates</p2>
+            <div class="button-container">
+                <div id="buttonArea"></div>
+            </div>
+        </div> 
+        
+        <div id="viz"></div>
+
+		<script type="module" src="/main.js"></script>
+
+        
+		
+	</body>
+</html>
