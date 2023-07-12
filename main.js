@@ -11,8 +11,8 @@ function main(){
   
   //setting up earth(globe)
   const mainSphere= new THREE.SphereGeometry(earthRadius,64,64);
-  const textureimg= new THREE.TextureLoader().load('textures/earthhd.jpg');
-  const texturebump= new THREE.TextureLoader().load('textures/dG4sE.jpg');
+  const textureimg= new THREE.TextureLoader().load('textures/earth.jpg');
+  const texturebump= new THREE.TextureLoader().load('textures/bump.jpg');
   const texturespec= new THREE.TextureLoader().load('textures/spec.jpg')
   var material= new THREE.MeshPhongMaterial({ map:textureimg, bumpMap:texturebump, specularMap:texturespec });
   //var material= new THREE.MeshPhongMaterial();
