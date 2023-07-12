@@ -67,18 +67,6 @@ function main(){
   
   scene.add(earthmesh);
 
-  // Create the buttons
-  let zoomInButton = document.createElement("button");
-  zoomInButton.textContent = "Zoom In";
-  zoomInButton.addEventListener("click", onZoomIn);
-
-  let zoomOutButton = document.createElement("button");
-  zoomOutButton.textContent = "Zoom Out";
-  zoomOutButton.addEventListener("click", onZoomOut);
-
-  //document.getElementById("buttonArea").appendChild(zoomInButton).classList.add("button");
-  //document.getElementById("buttonArea").appendChild(zoomOutButton).classList.add("button");
-
   var displayElement = document.getElementById('displayText');
   var cordElement= document.getElementById('cordText');
   cordElement.textContent= defaultCordinates[0]+ ", "+defaultCordinates[1]
@@ -92,7 +80,7 @@ function main(){
   
   //creating camera moving animation to the target area
   const startPosition= new THREE.Vector3(1425,6500,-6160);
-  const endPosition= new THREE.Vector3(1425,cy,-6160);
+  const endPosition= new THREE.Vector3(1425,cy,-6160); //1414.409116321146,1109.8583367998397,-6130.491802465729
   const animDuration=5;
 
   const mixer= new THREE.AnimationMixer(camera);
@@ -105,42 +93,6 @@ function main(){
   action.setLoop(THREE.LoopOnce);
   action.clampWhenFinished=true;
   action.play();
-  
-
-  function calculateDistanceFromFOV(fov, viewHeight) {
-    const verticalFOV = (fov * Math.PI) / 180; // Convert degrees to radians
-    const halfHeight = Math.tan(verticalFOV / 2);
-    const distance = viewHeight / (2 * halfHeight);
-    return distance;
-  }
-
-  //function to calculate the height from which we are seeing things
-  function camDist(camX,camY,camZ){
-    var distance= Math.sqrt((camX*camX)+(camY*camY)+(camZ*camZ)); //since cam is looking to center (0,0,0)
-    distance-=6378;
-    return distance;
-  }
-
-
-  function onZoomIn() {
-   if(camera.position.z<-13000){
-    camera.position.z+=0.5;
-
-   }else if(camera.position.z>13000){
-    camera.position.z-=0.5;
-   }else{
-    camera.fov-=1;
-   }
-    displayElement.textContent = camera.fov;
-    camera.updateProjectionMatrix();
-    displayElement.textContent = camera.fov;
-  }
-
-  function onZoomOut() {
-    camera.fov+=5;
-    camera.updateProjectionMatrix();
-    displayElement.textContent = camera.fov;
-  }
 
   //finding coordinates on right mouse click
   const raycaster= new THREE.Raycaster();
