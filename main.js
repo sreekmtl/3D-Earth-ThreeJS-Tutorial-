@@ -79,7 +79,7 @@ function main(){
   camera.updateProjectionMatrix();
   
   //creating camera moving animation to the target area
-  const startPosition= new THREE.Vector3(1425,6500,-6160);
+  const startPosition= new THREE.Vector3(1425,9000,-6160);
   const endPosition= new THREE.Vector3(1425,cy,-6160); //1414.409116321146,1109.8583367998397,-6130.491802465729
   const animDuration=5;
 
