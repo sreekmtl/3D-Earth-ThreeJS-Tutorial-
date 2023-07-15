@@ -1,5 +1,5 @@
 # 3D-Earth-ThreeJS-Tutorial-
-Tutorial repo for creating 3D virtual globe using ThreeJS
+Tutorial repo for creating 3D virtual globe using ThreeJS. Tutorial available at https://medium.com/@sreeharikollamattam/creating-3d-interactive-earth-using-threejs-for-web-68707ecd68e1
 
 Live site can be found at : https://sreekmtl.github.io/3D-Earth-ThreeJS-Tutorial-/
 
