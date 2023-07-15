@@ -32,7 +32,7 @@ var tl= bbox[1]-bbox[3]; //thetalength (tl)
 pl=checkNeg(pl);
 tl=checkNeg(tl);
 
-//converting pl and tl to radians
+//converting ps, ts, pl and tl to radians
 ps= ps*(Math.PI/180);
 ts= ts*(Math.PI/180);
 pl= pl*(Math.PI/180);
@@ -40,18 +40,19 @@ tl= tl*(Math.PI/180);
 
 export function overlay(){
 
-    const geometry= new THREE.SphereGeometry(6378,64,64,ps,pl,ts,tl);
-    const textureimg= new THREE.TextureLoader().load('assets/l8idk22_crop.png'); //loading overlay image as wms layer
-    const distext= new THREE.TextureLoader().load('assets/dem_crop.png');  //loading dem as wms layer
+    const geometry= new THREE.SphereGeometry(6378,64,64,ps,pl,ts,tl); //creating geometry of sphere2 (for overlay)
+    const distext= new THREE.TextureLoader().load('assets/dem_crop.png'); //loading DEM as displacementMap which makes the surface undulated based on pixel value of DEM
+    const textureimg= new THREE.TextureLoader().load('assets/l8idk22_crop.png'); //landsat8 image which overlays the undulated surface
+     
 
 
     //adding the textures to material
-    var material= new THREE.MeshPhongMaterial({ map:textureimg,transparent:true,displacementMap:distext,displacementScale:1});
+    var material= new THREE.MeshPhongMaterial({ map:textureimg,transparent:true,displacementMap:distext,displacementScale:1}); //dispacementscale determines the level of undulation in the terrain
 
     //creating mesh (from material and geometry)
     var overlaymesh= new THREE.Mesh(geometry, material);
 
 
-    return overlaymesh;
+    return overlaymesh; //This mesh is returned and added to the same scene of first sphere. so everything will come together now
     
 }

@@ -6,18 +6,18 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 function main(){
 
-  const defaultCordinates= [77.1025, 9.9189]; //Test location (Cordinates of Idukki, Kerala, India)
-  let earthRadius= 6378;
+  const defaultCordinates= [77.1025, 9.9189]; //Default location for this project(Cordinates of Idukki, Kerala, India)
+  let earthRadius= 6378; //radius of sphere1(Earth)
   
   //setting up earth(globe)
-  const mainSphere= new THREE.SphereGeometry(earthRadius,64,64);
+  const mainSphere= new THREE.SphereGeometry(earthRadius,64,64); //creating geometry
   const textureimg= new THREE.TextureLoader().load('textures/earth.jpg');
   const texturebump= new THREE.TextureLoader().load('textures/bump.jpg');
   const texturespec= new THREE.TextureLoader().load('textures/spec.jpg')
-  var material= new THREE.MeshPhongMaterial({ map:textureimg, bumpMap:texturebump, specularMap:texturespec });
-  //var material= new THREE.MeshPhongMaterial();
+  var material= new THREE.MeshPhongMaterial({ map:textureimg, bumpMap:texturebump, specularMap:texturespec }); //creating material& adding texture
+ 
 
-  var earthmesh= new THREE.Mesh(mainSphere, material);
+  var earthmesh= new THREE.Mesh(mainSphere, material); //adding geometry and material to mesh
     
   // Setup renderer
   const renderer = new THREE.WebGLRenderer();
