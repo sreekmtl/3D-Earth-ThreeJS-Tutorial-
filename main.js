@@ -75,12 +75,13 @@ function main(){
   // Setup camera
   const camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHeight,1,20000);
   //camera.position.set(1425,cy,-6160); //use cx,cy,cz for exact location. This is for demo
-  camera.lookAt(0,0,0);
+  
+  //camera.lookAt(0,0,0);
   camera.updateProjectionMatrix();
   
   //creating camera moving animation to the target area
-  const startPosition= new THREE.Vector3(1425,9000,-6160);
-  const endPosition= new THREE.Vector3(1425,cy,-6160); //1414.409116321146,1109.8583367998397,-6130.491802465729
+  const startPosition= new THREE.Vector3(1425,9000,-6160);//1425,9000,-6160
+  const endPosition= new THREE.Vector3(1417.72,1105.789,-6136); //1425,cy,-6160
   const animDuration=5;
 
   const mixer= new THREE.AnimationMixer(camera);
@@ -93,6 +94,7 @@ function main(){
   action.setLoop(THREE.LoopOnce);
   action.clampWhenFinished=true;
   action.play();
+
 
   //finding coordinates on right mouse click
   const raycaster= new THREE.Raycaster();
@@ -136,17 +138,11 @@ function main(){
 
   //function to adjust orbital controls speed based on camera z-distance
   function controlSpeed(){
-    if(controls.getDistance()-6378<=100){
-      controls.zoomSpeed=0.001;
-      controls.rotateSpeed=0.001;
-    }else if((controls.getDistance()-6378>=100) && (controls.getDistance()-6378<=1000)){
-      controls.zoomSpeed=0.01;
-      controls.rotateSpeed=0.01;
-    }else{
-      controls.zoomSpeed=1;
-      controls.rotateSpeed=1;
-    }
+    controls.zoomSpeed= (controls.getDistance()-6378)*0.0001;
+    controls.rotateSpeed= (controls.getDistance()-6378)*0.0001;
+  
   }
+  
 
   // Kick-off renderer
   (function animate() { // IIFE
